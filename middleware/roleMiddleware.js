@@ -48,7 +48,8 @@ export const verifyHouseRole = (allowedRoles = []) => {
       req.house = house;
       next();
     } catch (error) {
-      res.status(500).json({ message: 'Error interno al validar el rol del usuario.', error: error.message });
+      // ✅ Pasamos el error al manejador centralizado de errores con next(error)
+      return next(error);
     }
   };
 };
